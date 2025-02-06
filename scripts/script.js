@@ -28,7 +28,14 @@ const ready = () => {
     // buttonMenuToggle.classList.toggle("icon-x");
     const n1 = parseFloat(firstN.value);
     if ( isNumber(n1) && n1 >= 0 &&  Number.isInteger(n1)){
-      let textDetails = n1 === 0 ? "Para cumplir con la convención del producto vacío" : generateDetailsOfFactorialOf(n1);
+      let esCero = (n1 === 0);
+      let sobreCien = (n1 > 100);
+      let textDetails = "";
+      if (esCero){
+        textDetails = "Para cumplir con la convención del producto vacío";
+      } else if (!sobreCien) {
+        textDetails = generateDetailsOfFactorialOf(n1)
+      }
       textDetails = `${n1}! =&gt; <br> ${textDetails} =&gt; <br> `;
       let textResult = `${n1}! = ${calcFactorial(n1)}`;
       elDetails.innerHTML = textDetails;
